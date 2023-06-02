@@ -1,0 +1,128 @@
+﻿
+@model List<MyFirstApp.Models.EmpModel>
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .edit-button  {
+            padding: 6px 10px;
+            background-color: #f9fe01;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .delete-button {
+            padding: 6px 10px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+            .delete-button:hover {
+                background-color: #b61a1a;
+            }
+
+
+        .edit-button:hover {
+            background-color: #989b01;
+        }
+        .submit-button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+            .submit-button:hover {
+                background-color: #45a049;
+            }
+
+          a{
+            text-decoration: none;
+            color:white;
+        }
+            a:hover {
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.City</td>
+                    <td>
+                        <button class="edit-button"><a href="@Url.Action("Edit", "Home", new {item.Id})">Edit</a></button>
+                    </td>
+                    <td>
+                        <button class="delete-button"><a href="@Url.Action("Delete","Home", new {item.Id})">Delete</a></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <br />
+    <button class="submit-button"><a href="@Url.Action("AddForm","Home")">Add</a> </button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
